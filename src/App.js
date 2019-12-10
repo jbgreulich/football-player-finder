@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
+import PlayerList from './Components/PlayerList';
+import Search from './Components/Search';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+  state = {playerData: []};
 
-export default App;
+  async componentDidMount() {
+    const response = await fetch('https://football-players-b31f2.firebaseio.com/players.json');
+    const json = await response.json();
+    console.log(json);
+    this.setState({playerData: json});
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <h1 className='title'>Football Player Finder</h1>
+          <div id='search-container'>
+            <Search />
+          </div>
+        </header>
+        <div className='list'>
+          <PlayerList playerDataArray={this.state.playerData} />
+        </div>
+      </div>
+    );
+  }
+}
