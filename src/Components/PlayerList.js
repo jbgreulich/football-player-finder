@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class PlayerList extends Component {
   renderPlayers() {
-    const {playerDataArray} = this.props;
+    const { playerDataArray } = this.props;
 
     if (!playerDataArray.length) {
       return null;
