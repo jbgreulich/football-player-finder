@@ -1,0 +1,7 @@
+export const FETCH_PLAYERS = 'FETCH_PLAYERS';
+export const INIT_DISPLAY_PLAYERS = 'INIT_DISPLAY_PLAYERS';
+export const SET_FILTERED_PLAYERS = 'SET_FILTERED_PLAYERS';
+export const SET_NAME = 'SET_NAME';
+export const SET_POSITION = 'SET_POSITION';
+export const SET_AGE = 'SET_AGE';
+export const ENABLE_SEARCH = 'ENABLE_SEARCH';

@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 
 export default class PlayerList extends Component {
-  renderPlayers() {
-    const { playerDataArray } = this.props;
+  componentDidMount() {
+    this.props.fetchPlayers();
+  }
 
-    if (!playerDataArray.length) {
+  renderPlayers() {
+    const { filteredPlayers } = this.props;
+
+    if (!filteredPlayers.length) {
       return null;
     }
 
-    return playerDataArray.map((player, index) => {
+    return filteredPlayers.map((player, index) => {
       return (
         <tr className='player-list' key={index}>
           <td>{player.name}</td>
